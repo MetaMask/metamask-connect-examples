@@ -1,0 +1,64 @@
+name: Bug Report
+description: Report a bug in one of the quickstart examples
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: quickstart
+    attributes:
+      label: Quickstart
+      description: Which quickstart are you using?
+      options:
+        - EVM / JavaScript
+        - EVM / React
+        - Multichain / JavaScript
+        - Multichain / React
+        - Solana / JavaScript
+        - Solana / React
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the issue?
+      placeholder: |
+        1. Clone the quickstart
+        2. Run `pnpm dev`
+        3. Click "Connect Wallet"
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Provide relevant environment details.
+      placeholder: |
+        - OS: macOS 15.3
+        - Browser: Chrome 130
+        - MetaMask version: 12.x
+        - Node.js version: 20.x
+    validations:
+      required: false

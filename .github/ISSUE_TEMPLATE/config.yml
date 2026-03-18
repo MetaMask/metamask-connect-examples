@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or Discussion
+    url: https://github.com/MetaMask/metamask-connect-examples/discussions
+    about: Ask questions and share ideas in GitHub Discussions instead of opening an issue.
+  - name: MetaMask Developer Documentation
+    url: https://docs.metamask.io/
+    about: Check the official MetaMask documentation for guides and API references.
