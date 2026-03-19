@@ -1,0 +1,54 @@
+name: Feature Request
+description: Suggest a new quickstart or an improvement to an existing one
+labels: ["enhancement"]
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Request type
+      options:
+        - New quickstart
+        - Improvement to an existing quickstart
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: chain
+    attributes:
+      label: Chain
+      description: Which chain does this relate to?
+      options:
+        - EVM
+        - Solana
+        - Multichain
+        - Other / Not applicable
+    validations:
+      required: false
+  - type: dropdown
+    id: framework
+    attributes:
+      label: Framework
+      description: Which framework does this relate to?
+      options:
+        - JavaScript (vanilla)
+        - React
+        - Next.js
+        - Vue
+        - Other
+    validations:
+      required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Describe the feature or improvement you'd like.
+    validations:
+      required: true
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use case
+      description: Why is this needed? What problem does it solve?
+    validations:
+      required: true

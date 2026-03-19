@@ -1,0 +1,7 @@
+version: 2
+
+issueRules:
+  # Network access alerts are expected in this repo — all instances come from
+  # first-party MetaMask SDK packages (@metamask/analytics, @metamask/connect-multichain,
+  # @metamask/mobile-wallet-protocol-*) that use fetch/WebSocket for wallet communication.
+  networkAccess: false
