@@ -8,4 +8,4 @@ Fixes #
 
 - [ ] `pnpm lint` passes from the repo root
 - [ ] `pnpm format:check` passes from the repo root
-- [ ] If a quickstart was modified, it runs successfully with `pnpm dev`
+- [ ] If a quickstart or integration was modified, it runs successfully with `pnpm dev`
