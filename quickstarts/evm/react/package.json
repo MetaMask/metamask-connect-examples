@@ -26,5 +26,16 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.57.1",
     "vite": "^7.1.2"
+  },
+  "pnpm": {
+    "packageExtensions": {
+      "@metamask/connect-multichain": {
+        "peerDependenciesMeta": {
+          "@react-native-async-storage/async-storage": {
+            "optional": true
+          }
+        }
+      }
+    }
   }
 }
