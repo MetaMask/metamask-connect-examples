@@ -45,7 +45,9 @@ const client = await createEVMClient({
 })
 // IMP END - Initialize MetaMask Connect
 
+// IMP START - Get Provider
 const provider = client.getProvider()
+// IMP END - Get Provider
 
 function App() {
   const [account, setAccount] = useState<string | null>(null)
@@ -134,14 +136,14 @@ function App() {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [])
 
+  // IMP START - Connect with MetaMask Wallet
   const handleConnect = async () => {
     setLoadingBtn('connect')
     try {
-      // IMP START - Connect with MetaMask Wallet
       const { accounts, chainId } = await client.connect({
         chainIds: ['0xaa36a7', '0xe705', '0x14a34'],
       })
-      // IMP END - Connect with MetaMask Wallet
+
       showConnected(accounts[0], chainId)
     } catch (error) {
       handleError(error)
@@ -149,7 +151,9 @@ function App() {
       setLoadingBtn(null)
     }
   }
+  // IMP END - Connect with MetaMask Wallet
 
+  // IMP START - Connect and Sign
   const handleConnectSign = async () => {
     setLoadingBtn('connectSign')
     try {
@@ -169,7 +173,9 @@ function App() {
       setLoadingBtn(null)
     }
   }
+  // IMP END - Connect and Sign
 
+  // IMP START - Connect With
   const handleConnectSend = async () => {
     setLoadingBtn('connectSend')
     try {
@@ -200,18 +206,20 @@ function App() {
       setLoadingBtn(null)
     }
   }
+  // IMP END - Connect With
 
+  // IMP START - Disconnect from MetaMask Wallet
   const handleDisconnect = async () => {
     try {
-      // IMP START - Disconnect from MetaMask Wallet
       await client.disconnect()
-      // IMP END - Disconnect from MetaMask Wallet
       showDisconnected()
     } catch (error) {
       console.error(error)
     }
   }
+  // IMP END - Disconnect from MetaMask Wallet
 
+  // IMP START - Sign Message
   const handleSignMessage = async () => {
     const addr = client.getAccount()
     if (!addr) return
@@ -229,7 +237,9 @@ function App() {
       setLoadingBtn(null)
     }
   }
+  // IMP END - Sign Message
 
+  // IMP START - Send Transaction
   const handleSendTransaction = async () => {
     const addr = client.getAccount()
     if (!addr) return
@@ -252,7 +262,9 @@ function App() {
       setLoadingBtn(null)
     }
   }
+  // IMP END - Send Transaction
 
+  // IMP START - Switch Chain
   const handleSwitchChain = async (targetChainId: string) => {
     setChainDropdownOpen(false)
     try {
@@ -265,6 +277,7 @@ function App() {
       handleError(error)
     }
   }
+  // IMP END - Switch Chain
 
   return (
     <div className="container">

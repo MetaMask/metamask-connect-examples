@@ -10,7 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@metamask/connect-evm": "^0.8.0",
+    "//IMP START": "IMP START - Install MetaMask Connect",
+    "@metamask/connect-evm": "^0.9.0",
+    "//IMP END": "IMP END - Install MetaMask Connect",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
