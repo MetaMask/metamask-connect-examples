@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
+// IMP START - MetaMask Connect Import
 import { createEVMClient, getInfuraRpcUrls } from '@metamask/connect-evm'
-
+// IMP END - MetaMask Connect Import
 import {
   CHAINS,
   getChainName,
@@ -21,6 +22,7 @@ const SWITCH_CHAINS = Object.entries(CHAINS).map(([id, info]) => ({
   name: info.name,
 }))
 
+// IMP START - Initialize MetaMask Connect
 const client = await createEVMClient({
   dapp: {
     name: 'My MetaMask Connect EVM React DApp',
@@ -41,6 +43,7 @@ const client = await createEVMClient({
     preferExtension: true,
   },
 })
+// IMP END - Initialize MetaMask Connect
 
 const provider = client.getProvider()
 
@@ -134,9 +137,11 @@ function App() {
   const handleConnect = async () => {
     setLoadingBtn('connect')
     try {
+      // IMP START - Connect with MetaMask Wallet
       const { accounts, chainId } = await client.connect({
         chainIds: ['0xaa36a7', '0xe705', '0x14a34'],
       })
+      // IMP END - Connect with MetaMask Wallet
       showConnected(accounts[0], chainId)
     } catch (error) {
       handleError(error)
@@ -198,7 +203,9 @@ function App() {
 
   const handleDisconnect = async () => {
     try {
+      // IMP START - Disconnect from MetaMask Wallet
       await client.disconnect()
+      // IMP END - Disconnect from MetaMask Wallet
       showDisconnected()
     } catch (error) {
       console.error(error)
