@@ -19,7 +19,7 @@ pnpm install
 
 This installs the shared dev tooling and sets up Husky pre-commit hooks automatically via the `prepare` script.
 
-To work on a specific quickstart, install its dependencies separately:
+To work on a specific quickstart or integration, install its dependencies separately:
 
 ```bash
 cd quickstarts/evm/react
@@ -34,13 +34,15 @@ metamask-connect-examples/
 │   └── evm/
 │       ├── javascript/
 │       └── react/
+├── integrations/
+│   └── wagmi/
 ├── eslint.config.js        # Root ESLint config (repo-wide)
 ├── .prettierrc             # Prettier config
 ├── .editorconfig           # Editor settings
 └── package.json            # Root dev tooling
 ```
 
-Each quickstart under `quickstarts/` is a **standalone project** with its own `package.json`, dependencies, and lockfile. End users clone individual quickstarts, so they must work independently without the root tooling.
+Each quickstart under `quickstarts/` and integration under `integrations/` is a **standalone project** with its own `package.json`, dependencies, and lockfile. End users clone individual projects, so they must work independently without the root tooling.
 
 ## Code Quality
 
@@ -82,14 +84,19 @@ Husky runs `lint-staged` before every commit. This automatically:
 
 You don't need to run lint or format manually before committing -- the hook handles it.
 
-## Adding a New Quickstart
+## Adding a New Quickstart or Integration
 
-1. Create a new directory under `quickstarts/{chain}/{framework}/`
-2. Include a self-contained `package.json` with `dev`, `build`, `lint`, and `preview` scripts
-3. Include a `.gitignore` that covers `node_modules`, `dist`, `.env`, and editor files
-4. Include a `.env.example` with required environment variables
-5. Include a `README.md` following the existing pattern (clone instructions, setup steps, run command)
-6. If using React/TypeScript, include an `eslint.config.js` and `tsconfig.json` for standalone use
+For quickstarts, create a new directory under `quickstarts/{chain}/{framework}/`.
+For integrations, create a new directory under `integrations/{library}/`.
+
+In either case:
+
+1. Include a self-contained `package.json` with `dev`, `build`, `lint`, and `preview` scripts
+2. Include a `.gitignore` that covers `node_modules`, `dist`, `.env`, and editor files
+3. Include a `.env.example` with required environment variables
+4. Include a `README.md` following the existing pattern (clone instructions, setup steps, run command)
+5. If using React/TypeScript, include an `eslint.config.js` and `tsconfig.json` for standalone use
+6. Add the root `eslint.config.js` TypeScript/React rules for the new directory
 
 ## Commit Messages
 
@@ -103,7 +110,7 @@ Write clear, concise commit messages. Use the imperative mood:
 
 1. Create a feature branch from `main`
 2. Make sure `pnpm lint` and `pnpm format:check` pass from the root
-3. If you modified a quickstart, verify it runs with `pnpm dev` from that project directory
+3. If you modified a quickstart or integration, verify it runs with `pnpm dev` from that project directory
 4. Open a PR with a description of what changed and why
 
 ## License

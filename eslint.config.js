@@ -20,7 +20,7 @@ export default tseslint.config(
   },
 
   {
-    files: ['quickstarts/*/react/**/*.{ts,tsx}'],
+    files: ['quickstarts/*/react/**/*.{ts,tsx}', 'integrations/wagmi/**/*.{ts,tsx}'],
     extends: [
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],

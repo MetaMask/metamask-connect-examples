@@ -13,9 +13,17 @@ Each quickstart is a standalone project that can be cloned and run independently
 | JavaScript | [`quickstarts/evm/javascript`](quickstarts/evm/javascript) | [EVM JavaScript Quickstart](https://docs.metamask.io/metamask-connect/evm/quickstart/javascript) |
 | React      | [`quickstarts/evm/react`](quickstarts/evm/react)           | [EVM React Quickstart](https://docs.metamask.io/metamask-connect/evm/quickstart/react)           |
 
+## Integrations
+
+Examples showing MetaMask Connect integrated with popular web3 libraries.
+
+| Library | Directory                                  | Docs                                                                                |
+| ------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
+| wagmi   | [`integrations/wagmi`](integrations/wagmi) | [Wagmi Integration](https://docs.metamask.io/metamask-connect/evm/quickstart/wagmi) |
+
 ## Getting Started
 
-Pick a quickstart and clone it directly using [degit](https://www.npmjs.com/package/degit):
+Pick a quickstart or integration and clone it directly using [degit](https://www.npmjs.com/package/degit):
 
 ```bash
 npx degit MetaMask/metamask-connect-examples/quickstarts/evm/react my-project
@@ -33,7 +41,7 @@ cd metamask-connect-examples/quickstarts/evm/react
 pnpm install
 ```
 
-Each quickstart has its own README with specific setup instructions.
+Each quickstart and integration has its own README with specific setup instructions.
 
 ## Contributing
 
