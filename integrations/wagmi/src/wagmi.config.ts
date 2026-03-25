@@ -1,6 +1,6 @@
 import { createConfig, http } from 'wagmi'
 import { mainnet, sepolia, lineaSepolia, baseSepolia } from 'wagmi/chains'
-import { metaMask } from '@wagmi/connectors'
+import { metaMask } from 'wagmi/connectors'
 
 const INFURA_KEY = import.meta.env.VITE_INFURA_API_KEY
 
