@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import {
-  useAccount,
+  useConnection,
   useBalance,
+  useChains,
   useConnect,
+  useConnectors,
   useDisconnect,
   useSignMessage,
   useSendTransaction,
@@ -20,13 +22,15 @@ function toHexChainId(id: number): string {
 }
 
 function App() {
-  const { address, isConnected, chainId } = useAccount()
+  const { address, isConnected, chainId } = useConnection()
   const { data: balanceData } = useBalance({ address })
-  const { connectors, connectAsync } = useConnect()
-  const { disconnect } = useDisconnect()
-  const { chains, switchChain } = useSwitchChain()
-  const { signMessageAsync } = useSignMessage()
-  const { sendTransactionAsync } = useSendTransaction()
+  const connectors = useConnectors()
+  const connect = useConnect()
+  const disconnect = useDisconnect()
+  const chains = useChains()
+  const switchChain = useSwitchChain()
+  const signMessage = useSignMessage()
+  const sendTx = useSendTransaction()
 
   const [result, setResult] = useState<Result | null>(null)
   const [chainDropdownOpen, setChainDropdownOpen] = useState(false)
@@ -53,8 +57,9 @@ function App() {
   const handleConnect = async () => {
     setLoadingBtn('connect')
     try {
+      console.log('connectors', connectors)
       const connector = connectors.find((c) => c.id === 'metaMaskSDK') ?? connectors[0]
-      await connectAsync({ connector })
+      await connect.mutateAsync({ connector })
     } catch (error) {
       handleError(error)
     } finally {
@@ -63,7 +68,7 @@ function App() {
   }
 
   const handleDisconnect = () => {
-    disconnect()
+    disconnect.mutate()
     setResult(null)
   }
 
@@ -72,7 +77,7 @@ function App() {
     setLoadingBtn('signMsg')
     try {
       const msg = signMsg || 'Hello from My DApp'
-      const signature = await signMessageAsync({ message: msg })
+      const signature = await signMessage.mutateAsync({ message: msg })
       setResult({ label: 'Signature', value: signature })
     } catch (error) {
       handleError(error)
@@ -86,7 +91,7 @@ function App() {
     setLoadingBtn('sendTx')
     try {
       const to = (sendTo.trim() || address) as `0x${string}`
-      const hash = await sendTransactionAsync({
+      const hash = await sendTx.mutateAsync({
         to,
         value: parseEther(sendValue || '0'),
       })
@@ -106,7 +111,7 @@ function App() {
   const handleSwitchChain = (targetChainId: number) => {
     setChainDropdownOpen(false)
     try {
-      switchChain({ chainId: targetChainId as (typeof chains)[number]['id'] })
+      switchChain.mutate({ chainId: targetChainId as (typeof chains)[number]['id'] })
     } catch (error) {
       handleError(error)
     }
