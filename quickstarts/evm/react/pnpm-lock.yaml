@@ -11,8 +11,8 @@ importers:
   .:
     dependencies:
       '@metamask/connect-evm':
-        specifier: ^0.9.0
-        version: 0.9.0(@babel/runtime@7.29.2)
+        specifier: ^0.10.0
+        version: 0.10.0(@babel/runtime@7.29.2)
       react:
         specifier: ^19.1.0
         version: 19.2.4
@@ -411,12 +411,12 @@ packages:
     resolution: {integrity: sha512-807Y6JxqeY3tckSRDse96RmHV6atDsSPLD/x9KIync8ccFjOwSZlv0n4NA5Bsi0znjOogU0jEe5hPNIDTFzFRg==}
     engines: {node: ^18.18 || >=20}
 
-  '@metamask/connect-evm@0.9.0':
-    resolution: {integrity: sha512-Ts2WZcCRYTjS8T2HMQiSOwtuqJABApV5DEB6PadwRi94msK95tQtaMOdvq8wo8uW/MrqGyYJWp4li54Mqn/i5g==}
+  '@metamask/connect-evm@0.10.0':
+    resolution: {integrity: sha512-jLW1/+h4TQI75dsjoPKNuhreMZXAuhzKz9zJoWGsX6SjiXJisBsQpkfCNEaHg/iC7Vhiptk9ElGDVGuJMMBQAg==}
     engines: {node: '>=20.19.0'}
 
-  '@metamask/connect-multichain@0.11.0':
-    resolution: {integrity: sha512-08l/B/Mc27pcYN7jq8+yraliVZdqftkLdv/UomB9lvvQx9Z6+l8igVWVMWziHcyBWa+v7+ExJaWtF+kTk3Y5yA==}
+  '@metamask/connect-multichain@0.12.0':
+    resolution: {integrity: sha512-gkVeVuS/jdh/nGseAvf8IF+LgarrjLNm7lNAcA7F4OExDKUUwL007Cm2r+DNIY747vPVY1QunzcFaSSiPsledA==}
     engines: {node: '>=20.19.0'}
     peerDependencies:
       '@react-native-async-storage/async-storage': ^1.23
@@ -1805,11 +1805,11 @@ snapshots:
       - '@babel/runtime'
       - supports-color
 
-  '@metamask/connect-evm@0.9.0(@babel/runtime@7.29.2)':
+  '@metamask/connect-evm@0.10.0(@babel/runtime@7.29.2)':
     dependencies:
       '@metamask/analytics': 0.4.0
       '@metamask/chain-agnostic-permission': 1.4.0(@babel/runtime@7.29.2)
-      '@metamask/connect-multichain': 0.11.0
+      '@metamask/connect-multichain': 0.12.0
       '@metamask/utils': 11.10.0
     transitivePeerDependencies:
       - '@babel/runtime'
@@ -1819,7 +1819,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  '@metamask/connect-multichain@0.11.0':
+  '@metamask/connect-multichain@0.12.0':
     dependencies:
       '@metamask/analytics': 0.4.0
       '@metamask/mobile-wallet-protocol-core': 0.4.0
