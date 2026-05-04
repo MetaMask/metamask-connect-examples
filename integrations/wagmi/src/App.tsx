@@ -127,7 +127,7 @@ function App() {
         <a href="https://metamask.io" target="_blank" rel="noreferrer">
           <img src={metaMaskLogo} className="logo" alt="MetaMask logo" />
         </a>
-        <h1>MetaMask Connect EVM Wagmi Quickstart</h1>
+        <h1>MetaMask Connect x Wagmi Quickstart</h1>
         <p className="subtitle">Connect, sign messages, and send transactions</p>
       </header>
 
