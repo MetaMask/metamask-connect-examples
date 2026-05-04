@@ -157,14 +157,16 @@ function App() {
   const handleConnectSign = async () => {
     setLoadingBtn('connectSign')
     try {
-      const signature = await client.connectAndSign({
+      const {
+        accounts,
+        chainId: connectedChainId,
+        signature,
+      } = await client.connectAndSign({
         message: 'Sign in to My MetaMask Connect EVM dapp',
         chainIds: ['0xaa36a7'],
       })
-      const addr = client.getAccount()
-      const chain = client.getChainId()
-      if (addr && chain) {
-        showConnected(addr, chain)
+      if (accounts[0] && connectedChainId) {
+        showConnected(accounts[0], connectedChainId)
       }
       setResult({ label: 'Signature', value: signature })
     } catch (error) {
@@ -179,7 +181,11 @@ function App() {
   const handleConnectSend = async () => {
     setLoadingBtn('connectSend')
     try {
-      const txHash = await client.connectWith({
+      const {
+        accounts,
+        chainId: txChainId,
+        result,
+      } = await client.connectWith({
         method: 'eth_sendTransaction',
         params: (acct) => [
           {
@@ -190,15 +196,14 @@ function App() {
         ],
         chainIds: ['0xaa36a7'],
       })
-      const addr = client.getAccount()
-      const chain = client.getChainId()
-      if (addr && chain) {
-        showConnected(addr, chain)
+      if (accounts[0] && txChainId) {
+        showConnected(accounts[0], txChainId)
       }
+      const txHash = typeof result === 'string' ? result : String(result)
       setResult({
         label: 'Transaction Hash',
-        value: txHash as string,
-        url: chain ? getExplorerTxUrl(chain, txHash as string) : undefined,
+        value: txHash,
+        url: txChainId ? getExplorerTxUrl(txChainId, txHash) : undefined,
       })
     } catch (error) {
       handleError(error)
