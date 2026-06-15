@@ -38,3 +38,5 @@ coverage
 # OS
 .DS_Store
 *.pem
+
+.pnpm-store
